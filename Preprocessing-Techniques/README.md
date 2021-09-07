@@ -1,4 +1,4 @@
-# Simple Image Preprocessing Techniques Using MINST Data
+# Simple Image Preprocessing Techniques Using MNIST Data
 Image preprocessing is an important step in any computer vision task, especially as the data becomes more complicated, noisy, and diverse. Good preprocessing could make the difference between a good model and an excellent model, impacting the final score greatly. Below, I will go over several very simple preprocessing techniques using the MINST digits dataset. (Disclaimer: By no means are these the ONLY preprocessing techniques available.)
 - Importing Libraries and Setting Up the Dataframe
 - Plotting Functions and Resizing Images
@@ -113,3 +113,27 @@ This is erosion with two iterations.
 And finally, this is one iteration with a 10x10 matrix.
 
 ![Capture(14)](https://user-images.githubusercontent.com/69808907/132282053-9f29d823-4c0c-4232-88a9-b86879c515e7.PNG)
+
+### Compound Operations
+There are also examples of compound opeartions in morphology. The two main ones are opening and closing and image, which are a combination of a dilation and an erosion.
+- Closing is a way of filling in holes and solidifying images, increasing generalization and decreasing the importance of smaller marks or details. An erosion is performed first and then a dilation is performed.
+- Opening is a way of decreasing small details in an image to "open" up larger details and forgo smaller, unimportant details. A dilation is performed first and then an erosion is performed. Any pixels that "survive" after the erosion are restroed after the dilation.
+
+Opening and closing can also be applied, which ultimately closes larger objects and forgoes smaller details that are not connected to the main content of the image.
+
+![e](https://i.ytimg.com/vi/1owu136z1zI/maxresdefault.jpg)
+
+#### Closing
+
+![Capture(15)](https://user-images.githubusercontent.com/69808907/132282182-ce9aa3fe-a5b2-47c6-8c0d-7f3e5d39ed2a.PNG)
+
+#### Opening
+
+![Capture(16)](https://user-images.githubusercontent.com/69808907/132282217-80f28d42-a91e-463b-88b7-8074ffe9ee77.PNG)
+
+## Edge Sharpening
+And finally, edge sharpening is a useful tool, especially if your dataset has many labelled images with very similar features and edge sharpening can help make them more defined. Here, edge sharpening uses the function filter2D, by passing the kernel through, which increases the difference between the central element and its surrounding elements, making the distinction. This distinction can be more helpful for image EDAs and understanding the data better or possibly for feature engineering.
+
+![f](https://static.packt-cdn.com/products/9781785283932/graphics/B04554_02_11.jpg)
+
+![Capture(17)](https://user-images.githubusercontent.com/69808907/132282272-e7ff1ddb-5d5e-4afe-96c8-3f11317a55e5.PNG)
