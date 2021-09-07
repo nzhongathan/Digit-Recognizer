@@ -46,3 +46,41 @@ I also defined the weight parameter, which dictates how much of an impact each n
 
 Seems like this model trained really well! Let's try out some different models before we decide on this one.
 
+## Training the XGBoost Classifier
+XGBoost, otherwise known as eXtreme Gradient Boosting, is a great resource to train gradient boosted decision trees fast and accurately. It has an option to use either trees or linear models, and there are several other parameters for you to choose from. For this model, I will be using a decision tree because I am doing a classification task.
+
+Decision trees are "flowchart-like" structures, where each node represents a "test" on an attribute, and each branch representing a different outcome. Each attribute will help differentiate each input from the next, until ultimately they reach the final layer, which is their class.
+
+![c](https://www.cs.cmu.edu/~bhiksha/courses/10-601/decisiontrees/DT.png)
+
+For this data, the tree method should work out pretty well, especially because each number will cover different pixels, so different combinations of pixels should be a pretty strong way to differentiate between the labels. Most of the hyperparameters needed to train a XGBoost model will be discovered through extensive hyperparameter testing and optimization, so I will just train the base model for now. The main parameter to keep in mind is the booster parameter, where you decide between a tree or linear model, but the default is set to tree so I will not have to specify anything.
+
+![d](https://images.slideplayer.com/34/8334889/slides/slide_2.jpg)
+
+![Capture(20)](https://user-images.githubusercontent.com/69808907/132283702-718c3f42-dc66-4a87-9238-a05be826ac2a.PNG)
+
+Great! This model seemed to outperform the KNN Classifier by a little bit. Time to try out one more choice.
+
+## Training the Naive Bayes Classifier
+Finally, our last classifier will be a Naive Bayes Classifier. Naive Bayes is a probabilistic model, which uses probability to make its classification choices. It applies the Bayes Theorm, which describes the probability of an event based on prior infromation, with a strong assumption of independence between the features. This makes Naive Bayes probably not the best classifier for this kind of problem, since each number relies on combinations of other features, but it is worth a try nonetheless. Naive Bayes Classifier can be coupled with Kernel Density Estimation, creating a much more complex model, but I will be training their base models for now.
+
+I will be training a Multinomial, Gaussian, and Bernoulli Naive Bayes Classifier. First, the Multinomial classifier is a Naive Bayes model based off a Multinomial distribution. Here, the model is able to handle discrete values better and are used more when there are integer values rather than boolean.
+
+![e](https://blogs.sas.com/content/iml/files/2013/08/multinomial.png)
+
+![Capture(21)](https://user-images.githubusercontent.com/69808907/132283821-40dff099-752c-432c-971f-1ba869997c27.PNG)
+
+Gaussian distribution is similar except it uses the Gaussian distrubtion to predict. Therefore, the distribution is preset, regardless of the data, and using the normal Gaussian distribution, the Naive Bayes model is able to make its predictions.
+
+![f](https://miro.medium.com/max/24000/1*IdGgdrY_n_9_YfkaCh-dag.png)
+
+![Capture(22)](https://user-images.githubusercontent.com/69808907/132283881-947252a4-8c8a-4b16-aea9-08fad138368a.PNG)
+
+Finally, I will be training a Bernoulli Naive Bayes Classifer. This basically implements a binomial distribution, which is similar to the multinomial distribution, except it uses 0 and 1s in a boolean fashion. Therefore, values are either present or not, whereas the count of the value is obsolete. This model should technically be the best one to use on our model.
+
+![g](https://www.mathworks.com/help/examples/stats/win64/CompareBinomialAndNormalDistributionPdfsExample_01.png)
+
+![Capture(23)](https://user-images.githubusercontent.com/69808907/132283954-7406e709-9218-48a3-b84e-f985cd33a67a.PNG)
+
+Yikes, this classifier performed way worse than the other two. Although the Bernoulli Classifier was supposed to be the best, it only barely outperformed the multinomial classifier, and still way off the XGBoost Classifier, which seems to be our best and our submission model.
+
