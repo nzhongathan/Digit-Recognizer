@@ -30,3 +30,9 @@ Next I created a few functions that will help me with my project. They are as li
 - size: Resizes pixels into arrays for matplotlib to read and plot
 
 ![Capture(1)](https://user-images.githubusercontent.com/69808907/132280904-87bedbb3-a711-402b-a1d4-0a7b2bd2fe61.PNG)
+
+## Image Normalization
+Time to get started! Normalizing image arrays between 0 and 1 is very beneficial when training deep learning models, because it helps the models converge and train faster.
+
+![Capture(20](https://user-images.githubusercontent.com/69808907/132280948-67b971a1-05e8-49ef-a117-68b240dd02e4.PNG)
+
