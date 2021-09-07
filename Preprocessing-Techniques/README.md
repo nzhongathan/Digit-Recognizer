@@ -96,3 +96,20 @@ This changes the parameters to five iterations.
 And finally this changes it back to one iteration but with a 10x10 matrix instead.
 
 ![Capture(11)](https://user-images.githubusercontent.com/69808907/132281686-67f331ac-fca5-4d65-8347-8235ab5e80ac.PNG)
+
+### Erosion
+Erosion is the opposite of dilation, where it scans for "fits" among the boundaries, and strips a layer from the inner and outer boundaries of the shape. This can be used to sharpen edges or increase constrast between two very similar images.
+
+![d](https://homepages.inf.ed.ac.uk/rbf/HIPR2/figs/erodbin.gif)
+
+This is erosion with one iteration and a 5x5 one matrix.
+
+![Capture(12)](https://user-images.githubusercontent.com/69808907/132281978-d0e48425-8549-45ea-88af-b0ddbae8073c.PNG)
+
+This is erosion with two iterations.
+
+![Capture(13)](https://user-images.githubusercontent.com/69808907/132282008-1d0ff146-3356-4145-bbaa-ccfd1c0c6cea.PNG)
+
+And finally, this is one iteration with a 10x10 matrix.
+
+![Capture(14)](https://user-images.githubusercontent.com/69808907/132282053-9f29d823-4c0c-4232-88a9-b86879c515e7.PNG)
