@@ -1,2 +1,3 @@
-# Digit-Recognizer
-Explored image preprocessing techniques and classification machine learning models to classify images of handwritten text
+# Digit Recognizer
+
+In this, I utilized the famous MNIST dataset of 
