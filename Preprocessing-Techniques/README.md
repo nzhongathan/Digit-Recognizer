@@ -76,3 +76,23 @@ And finally, bilateral filtering utilizes Gaussian filtering twice in order to p
 ## Morphological Operations
 Next, we will discuss morphological operations, which are a collection of nonlinear operations that deal with the shape (or morphology) of the image. These techniques are less concerned with the pixel values, such as the smoothing techniques presented above, rather the relative ordering of the pixel values (According to [Wikipedia](https://en.wikipedia.org/wiki/Mathematical_morphology)). These techniques utilize structuring elements, which are positioned throughout the image at different locations, where the operation figures out the correlation with the structuring elements with its surrounding elements. Some operations test whether they "fit" while others test contrast and "hits".
 
+![b](https://www.cs.auckland.ac.nz/courses/compsci773s1c/lectures/ImageProcessing-html/morph-probing.gif)
+
+With each morphological operation, I will provide examples of a change in kernel size and a change in iterations, in order to encompass those hyperparameters. In general, though, a larger kernel size works in larger steps while larger iterations tend increase the effect of the operation.
+
+### Dilation
+First off, dilation monitors "hits" or contrasts to the pixels, and adds an extra layer of pixels to the inner and outer boundaries of the shapes.
+
+![c](https://homepages.inf.ed.ac.uk/rbf/HIPR2/figs/diltbin.gif)
+
+This is dilations with one iteration and a 5x5 one matrix.
+
+![Capture(10)](https://user-images.githubusercontent.com/69808907/132281616-fdae59cb-f2a1-48d8-9f26-529242bc6248.PNG)
+
+This changes the parameters to five iterations.
+
+![Capture(110](https://user-images.githubusercontent.com/69808907/132281654-f0ff859d-4663-4715-9513-bf07cb69133b.PNG)
+
+And finally this changes it back to one iteration but with a 10x10 matrix instead.
+
+![Capture(11)](https://user-images.githubusercontent.com/69808907/132281686-67f331ac-fca5-4d65-8347-8235ab5e80ac.PNG)
