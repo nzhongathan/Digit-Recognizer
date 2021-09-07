@@ -72,3 +72,7 @@ And finally, bilateral filtering utilizes Gaussian filtering twice in order to p
 ![Capture(8)](https://user-images.githubusercontent.com/69808907/132281368-a5409c65-efa9-4463-b4cf-74460438b596.PNG)
 
 ![Capture(9)](https://user-images.githubusercontent.com/69808907/132281393-56c3c64a-4b52-4426-a1ea-c83074cfabbe.PNG)
+
+## Morphological Operations
+Next, we will discuss morphological operations, which are a collection of nonlinear operations that deal with the shape (or morphology) of the image. These techniques are less concerned with the pixel values, such as the smoothing techniques presented above, rather the relative ordering of the pixel values (According to [Wikipedia](https://en.wikipedia.org/wiki/Mathematical_morphology)). These techniques utilize structuring elements, which are positioned throughout the image at different locations, where the operation figures out the correlation with the structuring elements with its surrounding elements. Some operations test whether they "fit" while others test contrast and "hits".
+
