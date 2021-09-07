@@ -36,3 +36,39 @@ Time to get started! Normalizing image arrays between 0 and 1 is very beneficial
 
 ![Capture(20](https://user-images.githubusercontent.com/69808907/132280948-67b971a1-05e8-49ef-a117-68b240dd02e4.PNG)
 
+## Image Blurring
+Next, we will take a look at image blurring. Image blurring is a way of to reduce the detail and noise in an image, making it more blurry, but helping reduce overfitting and improve generalization in training deep learning models. Small, minute details in certain images may cause the models to depend on those details, making them ineffective against variation in other images. We will use OpenCV in order to apply averaging, Gaussian filtering, median filtering, and bilateral filtering.
+
+### Averaging
+Averaging is done by convoling an image with a normalized box filter, by taking the mean of the pixels in the kernel area and replacing the middle/central element. For example, a 3x3 normalized box filter would look like this.
+
+![Capture(2)](https://user-images.githubusercontent.com/69808907/132281110-0e494a88-cc16-4da9-8e9b-51dd2a43c6a7.PNG)
+
+The box filter's width and height can be changed in the blur function, where a bigger box filter would lead to higher generationlization and a greater loss in higher level details.
+
+![Capture(3)](https://user-images.githubusercontent.com/69808907/132281150-dbd9f0aa-5649-4900-9aca-2bf1d90ca677.PNG)
+
+### Gaussian Filtering
+In Gaussian Filtering, instead of using a normalized box filter, a Gaussian kernel is used instead. This method is especially effective in removing Gaussian noise, which is noise that has a probability density function equal to the normal distribution.
+
+Here, the width and height are specificed again (But this time they have to be odd), and the standard deviation must be specified.
+
+![Capture(4)](https://user-images.githubusercontent.com/69808907/132281212-a0747add-13c3-4c61-bc2f-7c5bfa24fb4e.PNG)
+
+![Capture(5)](https://user-images.githubusercontent.com/69808907/132281241-b5ad6f24-e54b-49f1-a615-d4a27554b477.PNG)
+
+### Median Filtering
+Median filtering, which is very similar to averaging, changes the central element of the kernel area to the median of the values in the kernel space. This is very effective against salt-and-pepper noise and the kernel size should always be a positive odd number.
+
+![Capture(6)](https://user-images.githubusercontent.com/69808907/132281289-77bdf765-54a9-4499-a549-8261a7d3bfee.PNG)
+
+Note: The image passing through the medianBlur function must be of dtype float32.
+
+![Capture(7)](https://user-images.githubusercontent.com/69808907/132281334-74d1a083-c24d-470d-a764-31f1599d43a0.PNG)
+
+### Bilateral Filtering
+And finally, bilateral filtering utilizes Gaussian filtering twice in order to preserve edge detail while also effectively removing noise. First, a Gaussian filter is taken in space, but a second one is taken as a function of the pixel difference. The first Gaussian function ensures only nearby pixels are blurred, while the second Gaussian function ensures that only pixels whose values are close to the central element are blurred, rather than elements with greater differences, which could indicate an edge.
+
+![Capture(8)](https://user-images.githubusercontent.com/69808907/132281368-a5409c65-efa9-4463-b4cf-74460438b596.PNG)
+
+![Capture(9)](https://user-images.githubusercontent.com/69808907/132281393-56c3c64a-4b52-4426-a1ea-c83074cfabbe.PNG)
