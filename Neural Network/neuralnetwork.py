@@ -1,47 +1,54 @@
 class NeuralNetwork():
+    """
+    A Fully Connected Neural Network. There are 784 input layer nodes, 12 hidden layer nodes, and 10 output layer
+    nodes.
+    """
     def __init__(self):
-        #nodes
+        
+        
+        # Nodes
         self.A = np.zeros((784, ))
-        self.B = np.zeros((128, ))
-        self.C = np.zeros((64, ))
-        self.D = np.zeros((32, ))
-        self.E = np.zeros((16, ))
+        self.B = np.zeros((256, ))
+        self.C = np.zeros((128, ))
+        self.D = np.zeros((64, ))
+        self.E = np.zeros((32, ))
         self.F = np.zeros((10, ))
         
-        #weights
-        self.M = 2 * np.random.rand(784, 128) - 1
-        self.N = 2 * np.random.rand(128, 64) - 1
-        self.O = 2 * np.random.rand(64, 32) - 1
-        self.P = 2 * np.random.rand(32, 16) - 1
-        self.Q = 2 * np.random.rand(16, 10) - 1
+        # Weights
+        self.M = 2 * np.random.rand(784, 256) - 1
+        self.N = 2 * np.random.rand(256, 128) - 1
+        self.O = 2 * np.random.rand(128, 64) - 1
+        self.P = 2 * np.random.rand(64, 32) - 1
+        self.Q = 2 * np.random.rand(32, 10) - 1
         
-        #biases
-        self.R = 2 * np.random.rand(128) - 1
-        self.S = 2 * np.random.rand(64) - 1
-        self.T = 2 * np.random.rand(32) - 1
-        self.U = 2 * np.random.rand(16) - 1
+        # Biases
+        self.R = 2 * np.random.rand(256) - 1
+        self.S = 2 * np.random.rand(128) - 1
+        self.T = 2 * np.random.rand(64) - 1
+        self.U = 2 * np.random.rand(32) - 1
         self.V = 2 * np.random.rand(10) - 1
         
-        self.B_before = np.zeros((128, ))
-        self.C_before = np.zeros((64, ))
-        self.D_before = np.zeros((32, ))
-        self.E_before = np.zeros((16, ))
+        # Before Values
+        self.B_before = np.zeros((256, ))
+        self.C_before = np.zeros((128, ))
+        self.D_before = np.zeros((64, ))
+        self.E_before = np.zeros((32, ))
         self.F_before = np.zeros((10, ))
         
-        self.M_grad = np.zeros((784, 128))
-        self.N_grad = np.zeros((128, 64))
-        self.O_grad = np.zeros((64, 32))
-        self.P_grad = np.zeros((32, 16))
-        self.Q_grad = np.zeros((16, 10))
+        self.M_grad = np.zeros((784, 256))
+        self.N_grad = np.zeros((256, 128))
+        self.O_grad = np.zeros((128, 64))
+        self.P_grad = np.zeros((64, 32))
+        self.Q_grad = np.zeros((32, 10))
         
-        self.R_grad = np.zeros((128, ))
-        self.S_grad = np.zeros((64, ))
-        self.T_grad = np.zeros((32, ))
-        self.U_grad = np.zeros((16, ))
+        self.R_grad = np.zeros((256, ))
+        self.S_grad = np.zeros((128, ))
+        self.T_grad = np.zeros((64, ))
+        self.U_grad = np.zeros((32, ))
         self.V_grad = np.zeros((10, ))
         
         
-    def forward(self, x): 
+    def forward(self, x): # A->F  R->V
         self.A = x
         self.B_before = np.dot(self.A, self.M) + self.R
         self.B = np.tanh(self.B_before)
@@ -101,14 +108,18 @@ class NeuralNetwork():
     def train(self, epochs, train_images, train_labels, val_images, val_labels, lr):
         error = []
         for i in range (epochs):
+            print("Epoch", i)
             for j in range (len(train_images)):
                 self.forward(train_images[j])
+                if j % 10000 == 0:
+                    print(np.sum((self.F - train_labels) ** 2) / len(train_images))
                 self.backpropagate(train_labels[j])
                 self.update(lr)
                 #self.decay = (lr / (i+1))/2;
                 #lr *= (1. / (1. + self.decay * i))
             error.append(self.evaluate(val_images, val_labels))
-            print("Epoch", i, ": ", error[i], "; Learning Rate: ", lr)
+            print("Accuracy: ", error[i], "; Learning Rate: ", lr)
+            print("============================================")
             if i >= 2 and abs(error[i] - error[i-2]) <= 0.0001:
                 break;
             
@@ -122,4 +133,5 @@ class NeuralNetwork():
             else:
                 continue
         return total/len(val_images)
-            
+
+    
