@@ -120,7 +120,7 @@ class NeuralNetwork():
             error.append(self.evaluate(val_images, val_labels))
             print("Accuracy: ", error[i], "; Learning Rate: ", lr)
             print("============================================")
-            if i >= 2 and abs(error[i] - error[i-2]) <= 0.0001:
+            if i >= 2 and abs(error[i] - error[i-2]) <= 0.01:
                 break;
             
             
