@@ -1,0 +1,59 @@
+Epoch 0
+    Percent correct: 11.27
+
+Epoch 1
+    Percent correct: 11.27
+
+Epoch 2
+    Percent correct: 10.7
+
+Epoch 3
+    Percent correct: 10.7
+
+Epoch 4
+    Percent correct: 21.2
+
+Epoch 5
+    Percent correct: 44.51
+
+Epoch 6
+    Percent correct: 75.75
+
+Epoch 7
+    Percent correct: 79.49
+
+Epoch 8
+    Percent correct: 86.7
+
+Epoch 9
+    Percent correct: 94.69
+
+Epoch 10
+    Percent correct: 95.59
+
+Epoch 11
+    Percent correct: 96.37
+
+Epoch 12
+    Percent correct: 96.49
+
+Epoch 13
+    Percent correct: 97.04
+
+Epoch 14
+    Percent correct: 97.33
+
+Epoch 15
+    Percent correct: 97.52
+
+Epoch 16
+    Percent correct: 97.73
+
+Epoch 17
+    Percent correct: 97.33
+
+Epoch 18
+    Percent correct: 97.73
+
+Epoch 19
+    Percent correct: 97.89
